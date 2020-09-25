@@ -1,0 +1,19 @@
+.group { 
+    display: table;
+    width: 90%;
+    font-size: 1em;
+    margin: 0 auto;
+} 
+.item {
+    display: table-cell;
+}
+.text { 
+    white-space: nowrap;
+    width: 1%;
+    padding: 0 10px;
+}
+.line {
+    border-bottom: 1px solid rgb(172, 170, 170);
+    position: relative;
+    top: -.5em;
+}
