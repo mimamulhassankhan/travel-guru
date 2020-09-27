@@ -1,24 +1,46 @@
-import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { placeData } from '../../FakeData/PlaceData';
 
-const LocationMap = () => {
+const LocationMap = ({place}) => {
+    const googleMapRef = useRef(null);
+    let googleMap = null;
+    const [lat, setLat] = useState(23.383011);
+    const [lng, setLng] = useState(92.293782);
+
+    useEffect(() =>{
+        const allPlaces = [...placeData];
+        const [selectedPlace] = allPlaces.filter(plc => plc.name === place);
+        const lat = selectedPlace.location.lat;
+        const lng = selectedPlace.location.lng;
+        setLat(lat);
+        setLng(lng);
+    },[place])
+
+    useEffect(() => {
+        googleMap = initGoogleMap();
+        createMarker();
+      }, []);
+
+    const initGoogleMap = () => {
+        return new window.google.maps.Map(googleMapRef.current, {
+          center: { lat: +lat, lng: +lng },
+          zoom: 8
+        });
+      }
+
+    const createMarker = () => new window.google.maps.Marker({
+        position: { lat: +lat, lng: +lng },
+        map: googleMap
+      }); 
+      
+    console.log(lat, lng);
     return (
-        <div>
-            {/* <Map
-                zoom={14}
-                initialCenter={{
-                    lat: 23.383011,
-                    lng: 92.293782
-                }}
-                >
-                <Marker
-                name="Sajek"
-                />
-                </Map> */}
-        </div>
+        <div
+                className="mt-5"
+                ref={googleMapRef}
+                style={{ width: 400, height: 600, borderRadius: 20 }}
+            /> 
     );
 };
 
-export default GoogleApiWrapper({
-    apiKey: 'API_KEY'
-  })(LocationMap);
+export default LocationMap;

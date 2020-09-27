@@ -45,19 +45,19 @@ const IntroSlider = () => {
     return (
         <div className="bg-transparent pt-5 d-flex align-items-center justify-content-around">
             <Helmet>
-                <style>{'body { background-image: url("/Images/Image/Rectangle 1.png"); background-size : cover; background-position : center; background-blend-mode: darken; }'}</style>
+                <style>{'body { background-image: url("/Images/Image/Rectangle 1.png"); background-size : cover; background-position : center; }'}</style>
             </Helmet>
             <div className="w-50 pl-5 text-white">
                 <Slider {...settings2} className="pl-5" asNavFor={nav2} ref={slider => (slider1 = slider)}>
                     {
-                        places.map((plc, idx) => <ChoiceContainer data={plc} key={idx}></ChoiceContainer> )
+                        places.map(plc => <ChoiceContainer data={plc} key={plc.id}></ChoiceContainer> )
                     }
                 </Slider>
             </div>
             <div className="w-50">
                 <Slider asNavFor={nav1} ref={slider => (slider2 = slider)} {...settings}>
                     {
-                        places.map((plc , idx) => <SliderItem data={plc} key={idx}></SliderItem>)
+                        places.map(plc => <SliderItem data={plc} key={plc.id}></SliderItem>)
                     }
                 </Slider>
             </div>

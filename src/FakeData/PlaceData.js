@@ -21,7 +21,7 @@ export const placeData = [
     },
     {
         id: 'PLC-3',
-        name: 'Sundarban',
+        name: 'Sundorbon',
         photo: '/Images/Image/sundorbon.png',
         description: 'The Sundarban National Park is a National Park, Tiger Reserve, and a Biosphere Reserve in West Bengal, India. It is part of the Sundarbans on the Ganges Delta, and adjacent to the Sundarbans Reserve Forest in Bangladesh.',
         location:{

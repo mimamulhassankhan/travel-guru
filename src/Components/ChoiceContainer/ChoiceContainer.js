@@ -5,12 +5,12 @@ import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const ChoiceContainer = ({data}) => {
-    const {name, description} = data;
+    const {id,name, description} = data;
     return (
         <div>
             <h1>{name}</h1>
             <p className="w-75">{description}</p>
-            <Link to={`/booking`}>
+            <Link to={`/places/${id}`}>
                 <Button className="align-items-center" variant="warning" type="submit">Booking <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon></Button>
             </Link>
         </div>

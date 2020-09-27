@@ -12,6 +12,7 @@ import SignUp from './Components/SignUp/SignUp';
 import CommonSignIn from './Components/CommonSignIn/CommonSignIn';
 import RoomSelectionPage from './Components/RoomSelectionPage/RoomSelectionPage';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import Notification from './Components/Notification/Notification';
 
 initializeIcons();
 
@@ -22,7 +23,7 @@ function App() {
       <Router className="main">
         <TitleBar/>
         <Switch> 
-          <Route path="/booking">
+          <Route path="/places/:placeId">
             <BookingPage />
           </Route>
           <Route exact path="/">
@@ -32,11 +33,14 @@ function App() {
             <Login />
             <CommonSignIn/>
           </Route>
+          <Route path="/notification">
+            <Notification />
+          </Route>
           <Route path="/signup">
             <SignUp />
             <CommonSignIn/>
           </Route>
-          <PrivateRoute path="/place/room">
+          <PrivateRoute path="/:placeName/hotels">
             <RoomSelectionPage/>
           </PrivateRoute>
           <Route path="*">
