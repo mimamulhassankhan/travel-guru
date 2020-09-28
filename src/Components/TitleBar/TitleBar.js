@@ -7,8 +7,7 @@ import { addLoggedinUser } from '../../Redux/Actions/appActions';
 import { handleSignOut } from './signoutManager';
 
 const TitleBar = ({user, addLoggedinUser}) => {
-    const {displayName, name, email} = user;
-    console.log(displayName);
+    const {name, email} = user;
 
 
     const signOut = () => {

@@ -4,8 +4,8 @@ import { placeData } from '../../FakeData/PlaceData';
 const LocationMap = ({place}) => {
     const googleMapRef = useRef(null);
     let googleMap = null;
-    const [lat, setLat] = useState(23.383011);
-    const [lng, setLng] = useState(92.293782);
+    const [lat, setLat] = useState(0.00);
+    const [lng, setLng] = useState(0.00);
 
     useEffect(() =>{
         const allPlaces = [...placeData];
@@ -19,7 +19,7 @@ const LocationMap = ({place}) => {
     useEffect(() => {
         googleMap = initGoogleMap();
         createMarker();
-      }, []);
+      }, [lat, lng]);
 
     const initGoogleMap = () => {
         return new window.google.maps.Map(googleMapRef.current, {
@@ -34,6 +34,7 @@ const LocationMap = ({place}) => {
       }); 
       
     console.log(lat, lng);
+
     return (
         <div
                 className="mt-5"

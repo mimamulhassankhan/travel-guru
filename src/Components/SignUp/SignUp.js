@@ -28,6 +28,7 @@ const SignUp = ({user, addLoggedinUser}) => {
     let { from } = location.state || { from: { pathname: "/" } };
 
     const handleBlur = (e) => {
+        e.preventDefault(); 
         let isFormValid = true;
         if(e.target.name === 'email'){
           isFormValid = /\S+\@\S+\.\S+/.test(e.target.value);
@@ -44,14 +45,12 @@ const SignUp = ({user, addLoggedinUser}) => {
           newUserInfo[e.target.name] = e.target.value;
           setLocalUser(newUserInfo);
         }
-        e.preventDefault(); 
       }
 
     const handleSubmit = e => {
         e.preventDefault();
         if(localUser.email && (localUser.password === localUser.confirmPassword)){
             const localName = localUser.firstName + ' ' + localUser.lastName;
-            console.log(localName);
             createUserWithEmailAndPassword( localName, localUser.email, localUser.password)
             .then(res => {
                 setLocalUser(res);

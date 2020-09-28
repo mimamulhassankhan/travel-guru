@@ -45,7 +45,6 @@ const Login = ({user, addLoggedinUser}) => {
         if(localUser.email && localUser.password) {
             signInWithEmailAndPassword(localUser.email, localUser.password)
             .then(res => {
-            console.log(res);
             setLocalUser(res);
             addLoggedinUser(res);
             history.replace(from);

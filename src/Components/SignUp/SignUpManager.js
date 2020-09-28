@@ -18,6 +18,6 @@ const updateUserInfo = (name) => {
     user.updateProfile({
       displayName: name
     })
-    .then(console.log('updated user'))
-    .catch(console.log('not updated'));
+    .then()
+    .catch();
 }
